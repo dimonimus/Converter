@@ -1,0 +1,35 @@
+﻿<Window x:Class="UltimateVideoConverter.AppIcon"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="App Icon" Width="128" Height="128"
+        WindowStyle="None" ResizeMode="NoResize"
+        Background="Transparent" AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Border Width="96" Height="96" CornerRadius="16">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FFBB741E" Offset="0"/>
+                    <GradientStop Color="#FFA500" Offset="0.75"/>
+                    <GradientStop Color="#FFB347" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border.BorderThickness>2</Border.BorderThickness>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#331A00" Offset="0"/>
+                    <GradientStop Color="#663300" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <TextBlock Text="K" 
+                       FontFamily="Kristen ITC" 
+                       FontSize="60" 
+                       Foreground="#FFA500"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontWeight="Bold"/>
+        </Border>
+    </Grid>
+</Window>

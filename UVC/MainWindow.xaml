@@ -1,0 +1,234 @@
+﻿<Window x:Class="UltimateVideoConverter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Ultimate Video Converter" Width="632" Height="399"
+        ResizeMode="NoResize" WindowStyle="None" 
+        Background="Transparent" AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen">
+
+    <Border CornerRadius="12" BorderThickness="2" BorderBrush="Black">
+        <Border.Background>
+            <SolidColorBrush Color="White"/>
+        </Border.Background>
+        <Border CornerRadius="10" BorderThickness="2" Opacity="0.95">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FFBB741E" Offset="0"/>
+                    <GradientStop Color="#FFA500" Offset="0.75"/>
+                    <GradientStop Color="#FFB347" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#331A00" Offset="0"/>
+                    <GradientStop Color="#663300" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Ultimate Video Converter" Foreground="DarkGray" FontSize="16" FontFamily="Kristen ITC"
+                               VerticalAlignment="Center" Margin="10,0,0,0"/>
+
+                    <Button x:Name="btnMinimize" BorderThickness="0" Content="-" Foreground="White"
+                            FontSize="16" FontFamily="Copperplate Gothic Bold" Cursor="Hand" Grid.Column="1"
+                            Click="btnMinimize_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#FFA500"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FF8C00"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18" CornerRadius="9" Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button x:Name="btnClose" BorderThickness="0" Content="X" Foreground="White"
+                            FontSize="12" FontFamily="Copperplate Gothic Bold" Cursor="Hand" Grid.Column="2"
+                            Click="btnClose_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#FF4500"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FF6347"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18" CornerRadius="9" Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+
+                <Grid Grid.Row="1" Margin="10">
+                    <Menu>
+                        <Menu.Style>
+                            <Style TargetType="Menu">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                                            <GradientStop Color="#331A00" Offset="0"/>
+                                            <GradientStop Color="#663300" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Menu.Style>
+
+                        <Menu.Resources>
+                            <Style TargetType="MenuItem">
+                                <Setter Property="Foreground" Value="#FFBB7A2B"/>
+                                <Setter Property="FontFamily" Value="Montserrat"/>
+                            </Style>
+                        </Menu.Resources>
+
+                        <MenuItem Header="Меню" FontFamily="Copperplate Gothic Bold" FontSize="14">
+                            <MenuItem Header="Найти ffmpeg" Click="FindFFmpeg_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                            <MenuItem Header="Выйти" Click="Exit_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                        </MenuItem>
+                        <MenuItem Header="Форматы видео" FontFamily="Copperplate Gothic Bold" FontSize="14">
+                            <MenuItem Header="Актуальные форматы" FontFamily="Copperplate Gothic Bold" FontSize="14">
+                                <MenuItem Header="В mp4" Click="ConvertToMp4_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                                <MenuItem Header="В avi" Click="ConvertToAvi_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                                <MenuItem Header="В mkv" Click="ConvertToMkv_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                            </MenuItem>
+                            <MenuItem Header="Неактуальные форматы" FontFamily="Copperplate Gothic Bold" FontSize="14">
+                                <MenuItem Header="В wmv" Click="ConvertToWmv_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                                <MenuItem Header="В mov" Click="ConvertToMov_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                                <MenuItem Header="В flv" Click="ConvertToFlv_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                            </MenuItem>
+                            <MenuItem Header="Устройства" FontFamily="Copperplate Gothic Bold" FontSize="14">
+                                <MenuItem Header="Nokia Lumia 610" Click="ConvertToNokia_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                            </MenuItem>
+                        </MenuItem>
+                        <MenuItem Header="Изображения" FontFamily="Copperplate Gothic Bold" FontSize="14">
+                            <MenuItem Header="Извлечь кадры из GIF" Click="ExtractGifFrames_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                            <MenuItem Header="Извлечь кадры из Видео" Click="ExtractVideoFrames_Click"  FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                        </MenuItem>
+                        <MenuItem Header="Аудио" FontFamily="Copperplate Gothic Bold" FontSize="14">
+                            <MenuItem Header="В MP3" FontFamily="Copperplate Gothic Bold" FontSize="14">
+                                <MenuItem Header="CD Audio в MP3" Click="ConvertCDAudioToMP3_Click"  FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                                <MenuItem Header="WAV в MP3" Click="ConvertWAVToMP3_Click"  FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                                <MenuItem Header="AAC в MP3" Click="ConvertFLACToWAV_Click"  FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                                <MenuItem Header="OGG в MP3" Click="ConvertFLACToWAV_Click"  FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                            </MenuItem>
+                            <MenuItem Header="В WAV" FontFamily="Copperplate Gothic Bold" FontSize="14">
+                                <MenuItem Header="WAV в MP3" Click="ConvertWAVToMP3_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                                <MenuItem Header="WAV в AAC" Click="ConvertWAVToAAC_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                                <MenuItem Header="WAV в OGG" Click="ConvertWAVToOGG_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                                <MenuItem Header="WAV в FLAC" Click="ConvertWAVToFLAC_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                            </MenuItem>
+                            <MenuItem Header="В AAC" FontFamily="Copperplate Gothic Bold" FontSize="14">
+                                <MenuItem Header="AAC в MP3" Click="ConvertAACToMP3_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                                <MenuItem Header="AAC в WAV" Click="ConvertAACToWAV_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                                <MenuItem Header="AAC в OGG" Click="ConvertAACToOGG_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                                <MenuItem Header="AAC в FLAC" Click="ConvertAACToFLAC_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                            </MenuItem>
+                            <MenuItem Header="В OGG" FontFamily="Copperplate Gothic Bold" FontSize="14">
+                                <MenuItem Header="OGG в MP3" Click="ConvertOGGToMP3_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                                <MenuItem Header="OGG в WAV" Click="ConvertOGGToWAV_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                                <MenuItem Header="OGG в AAC" Click="ConvertOGGToAAC_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                                <MenuItem Header="OGG в FLAC" Click="ConvertOGGToFLAC_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                            </MenuItem>
+                            <MenuItem Header="В FLAC" FontFamily="Copperplate Gothic Bold" FontSize="14">
+                                <MenuItem Header="FLAC в MP3" Click="ConvertFLACToMP3_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                                <MenuItem Header="FLAC в WAV" Click="ConvertFLACToWAV_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                                <MenuItem Header="FLAC в AAC" Click="ConvertFLACToAAC_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                                <MenuItem Header="FLAC в OGG" Click="ConvertFLACToOGG_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                            </MenuItem>
+                        </MenuItem>
+                        <MenuItem Header="Аудиоплееры" FontFamily="Copperplate Gothic Bold" FontSize="14">
+                            <MenuItem Header="CD-Audio" Click="OpenCDAudioPlayer_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                            <MenuItem Header="MP3-плеер" Click="OpenAudioPlayer_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                        </MenuItem>
+                        <MenuItem Header="О программе" Click="About_Click" FontFamily="Copperplate Gothic Bold" FontSize="14"/>
+                    </Menu>
+
+                    <Button Content="->" Width="150" Height="64" 
+                            HorizontalAlignment="Left" VerticalAlignment="Top" 
+                            Margin="450,270,0,0" 
+                            Click="NextScreen_Click" 
+                            BorderThickness="0" 
+                            Foreground="White" 
+                            FontSize="15" FontFamily="Franklin Gothic Demi" 
+                            Cursor="Hand">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#FF8C00"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FFA500"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="150" Height="40" CornerRadius="20" Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <TextBox x:Name="OutputTextBox" 
+                             Width="570" 
+                             Height="200" 
+                             HorizontalAlignment="Left" 
+                             VerticalAlignment="Top" 
+                             Margin="10,50,0,0" 
+                             TextWrapping="Wrap" 
+                             VerticalScrollBarVisibility="Auto" 
+                             IsReadOnly="True" 
+                             Background="WhiteSmoke" 
+                             Foreground="Black" 
+                             BorderThickness="1" 
+                             BorderBrush="Gray">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="TextBox">
+                                            <Border Background="{TemplateBinding Background}" 
+                                                    BorderBrush="{TemplateBinding BorderBrush}" 
+                                                    BorderThickness="{TemplateBinding BorderThickness}" 
+                                                    CornerRadius="10">
+                                                <ScrollViewer x:Name="PART_ContentHost" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </Grid>
+            </Grid>
+        </Border>
+    </Border>
+</Window>
